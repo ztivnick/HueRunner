@@ -1,0 +1,10 @@
+bin/
+test/
+
+.vscode/
+
+*.log
+*.tmp
+*.bak
+
+source/Secrets.mc
