@@ -26,21 +26,20 @@ class HueRunnerApp extends Application.AppBase {
   function getInitialView() as [Views] or [Views, InputDelegates] {
     var view = new HueRunnerView();
     var delegate = new HueRunnerInputDelegate();
+    Application.Storage.clearValues();
+
     return [view, delegate];
   }
 
   function setInitialState() as Void {
-    var accessToken = Storage.getValue("hue_access_token");
-    var expiresAt = Storage.getValue("hue_token_expires_at");
-    var appKey = Storage.getValue("hue_app_key");
+    var accessToken = Storage.getValue(Constants.STORAGE_KEY_ACCESS_TOKEN);
+    var expiresAt = Storage.getValue(Constants.STORAGE_KEY_EXPIRES_AT);
+    var appKey = Storage.getValue(Constants.STORAGE_KEY_APP_KEY);
 
     if (accessToken != null && expiresAt != null && expiresAt > Time.now().value() && appKey != null) {
       currentUiState = STATE_LOGGED_IN;
     } else {
-      Storage.deleteValue("hue_access_token");
-      Storage.deleteValue("hue_refresh_token");
-      Storage.deleteValue("hue_token_expires_at");
-      Storage.deleteValue("hue_app_key");
+      Application.Storage.clearValues();
       currentUiState = STATE_LOGGED_OUT;
     }
   }

@@ -14,14 +14,10 @@ class HueRunnerView extends WatchUi.View {
     _statusLabel = findDrawableById("statusLabel") as Text;
   }
 
-  // Called when this View is brought to the foreground. Restore
-  // the state of this View and prepare it to be shown. This includes
-  // loading resources into memory.
   function onShow() as Void {
     WatchUi.requestUpdate();
   }
 
-  // Update the view
   function onUpdate(dc as Dc) as Void {
     dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_BLACK);
     dc.clear();
@@ -43,7 +39,7 @@ class HueRunnerView extends WatchUi.View {
         statusText = "Error\nTap to Retry";
         break;
       default:
-        statusText = "Something went wrong, try restarting your watch";
+        statusText = "Unknown State";
         break;
     }
 
@@ -54,8 +50,5 @@ class HueRunnerView extends WatchUi.View {
     View.onUpdate(dc);
   }
 
-  // Called when this View is removed from the screen. Save the
-  // state of this View here. This includes freeing resources from
-  // memory.
   function onHide() as Void {}
 }
