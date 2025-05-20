@@ -26,7 +26,6 @@ class HueRunnerApp extends Application.AppBase {
   function getInitialView() as [Views] or [Views, InputDelegates] {
     var view = new HueRunnerView();
     var delegate = new HueRunnerInputDelegate();
-    Application.Storage.clearValues();
 
     return [view, delegate];
   }

@@ -11,7 +11,7 @@ class HueAuthService {
 
   function initialize() {
     Communications.registerForOAuthMessages(method(:onOAuthMessageCallback));
-  }
+  } 
 
   function startAuthenticationFlow() as Void {
     var app = getApp();

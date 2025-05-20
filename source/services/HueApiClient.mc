@@ -30,7 +30,7 @@ class HueApiClient {
       return;
     }
 
-    // 60 secondsto allow for some buffer
+    // 60 seconds to allow for some buffer
     if (Time.now().value() >= expiresAt - 60) {
       System.println("Access token expired or nearing expiry. Attempting refresh...");
       _refreshToken();
